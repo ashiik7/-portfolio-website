@@ -1,9 +1,8 @@
+
 "use client";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
-
-// Import icons
 import {
   FaDocker,
   FaFigma,
@@ -33,23 +32,22 @@ export default function Skillset() {
     }
   }, [controls, inView]);
 
-  // Skills array with icons
   const skills = [
-    { name: "Python", icon: <FaPython className="text-yellow-400 text-6xl" /> },
-    { name: "Django", icon: <SiDjango className="text-green-500 text-6xl" /> },
-    { name: "HTML", icon: <FaHtml5 className="text-orange-500 text-6xl" /> },
-    { name: "CSS", icon: <FaCss3Alt className="text-blue-500 text-6xl" /> },
-    { name: "Java", icon: <FaJava className="text-red-500 text-6xl" /> },
-    { name: "Git", icon: <FaGitAlt className="text-orange-400 text-6xl" /> },
-    { name: "GitHub", icon: <FaGithub className="text-gray-300 text-6xl" /> },
-    { name: "C++", icon: <SiCplusplus className="text-blue-400 text-6xl" /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400 text-6xl" /> },
-    { name: "C", icon: <SiC className="text-blue-500 text-6xl" /> },
-    { name: "Docker", icon: <FaDocker className="text-blue-400 text-6xl" /> },
-    { name: "TensorFlow", icon: <SiTensorflow className="text-orange-400 text-6xl" /> },
-    { name: "Figma", icon: <FaFigma className="text-pink-400 text-6xl" /> },
-    { name: "JavaScript", icon: <FaJsSquare className="text-yellow-300 text-6xl" /> },
-    { name: "React", icon: <FaReact className="text-cyan-400 text-6xl" /> },
+    { name: "Docker", icon: <FaDocker className="text-blue-400 text-5xl md:text-6xl" /> },
+    { name: "TensorFlow", icon: <SiTensorflow className="text-orange-400 text-5xl md:text-6xl" /> },
+    { name: "Figma", icon: <FaFigma className="text-pink-400 text-5xl md:text-6xl" /> },
+    { name: "JavaScript", icon: <FaJsSquare className="text-yellow-300 text-5xl md:text-6xl" /> },
+    { name: "React", icon: <FaReact className="text-cyan-400 text-5xl md:text-6xl" /> },
+    { name: "Python", icon: <FaPython className="text-yellow-400 text-5xl md:text-6xl" /> },
+    { name: "Django", icon: <SiDjango className="text-green-500 text-5xl md:text-6xl" /> },
+    { name: "HTML", icon: <FaHtml5 className="text-red-500 text-5xl md:text-6xl" /> },
+    { name: "CSS", icon: <FaCss3Alt className="text-blue-500 text-5xl md:text-6xl" /> },
+    { name: "Java", icon: <FaJava className="text-orange-600 text-5xl md:text-6xl" /> },
+    { name: "Git", icon: <FaGitAlt className="text-orange-500 text-5xl md:text-6xl" /> },
+    { name: "GitHub", icon: <FaGithub className="text-gray-300 text-5xl md:text-6xl" /> },
+    { name: "C++", icon: <SiCplusplus className="text-blue-600 text-5xl md:text-6xl" /> },
+    { name: "C", icon: <SiC className="text-gray-400 text-5xl md:text-6xl" /> },
+    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400 text-5xl md:text-6xl" /> },
   ];
 
   const containerVariants = {
@@ -71,21 +69,19 @@ export default function Skillset() {
   return (
     <section
       ref={ref}
-      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white p-8 relative overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20 relative overflow-hidden"
     >
-      {/* Heading */}
       <motion.h2
         initial="hidden"
         animate={controls}
         variants={itemVariants}
-        className="text-6xl font-bold mb-12 z-10"
+        className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 sm:mb-12 z-10 text-center"
       >
         My <span className="text-gray-300">Skillset</span>
       </motion.h2>
 
-      {/* Skill cards */}
       <motion.div
-        className="flex gap-8 flex-wrap justify-center z-10"
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 justify-center z-10"
         initial="hidden"
         animate={controls}
         variants={containerVariants}
@@ -95,43 +91,32 @@ export default function Skillset() {
             key={i}
             variants={itemVariants}
             drag
-            dragConstraints={{ top: -100, left: -100, right: 100, bottom: 100 }}
+            dragConstraints={{ top: -50, left: -50, right: 50, bottom: 50 }}
             whileHover={{ scale: 1.1, rotate: 5 }}
             whileDrag={{
               rotate: 360,
               transition: { duration: 1, repeat: Infinity, ease: "linear" },
             }}
-            className="w-36 h-36 flex flex-col items-center justify-center bg-white rounded-2xl shadow-xl cursor-pointer transform rotate-12"
+            className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 flex flex-col items-center justify-center bg-white rounded-xl sm:rounded-2xl shadow-xl cursor-pointer transform rotate-6"
           >
             {skill.icon}
-            <p className="mt-2 text-black font-semibold">{skill.name}</p>
+            <p className="mt-2 text-black text-sm sm:text-base font-semibold text-center">{skill.name}</p>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Text below cards */}
       <motion.p
         initial="hidden"
         animate={controls}
         variants={itemVariants}
-        className="mt-12 text-lg text-gray-400 z-10 text-center"
+        className="mt-10 sm:mt-12 text-sm sm:text-base md:text-lg text-gray-400 z-10 text-center px-4"
       >
-        I'm constantly learning and exploring new technologies <br /> to stay ahead in the ever-evolving world of software development.
+        I&apos;m constantly learning and exploring new technologies to stay ahead in the ever-evolving world of software development.
       </motion.p>
-
-      {/* Drag instruction */}
-      <motion.div
-        className="absolute top-1/3 right-24 text-white text-xl z-20"
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1, duration: 0.8 }}
-      >
-        <p className="italic">drag me</p>
-        <div className="w-16 h-0.5 bg-white rotate-45 mt-2"></div>
-      </motion.div>
     </section>
   );
 }
+
 
 
 
